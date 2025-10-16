@@ -38,7 +38,19 @@ namespace homework {
   // Note: use std::make_unique in clone() and the this pointer to copy the object using chatGPT is okay for this purpose
   // The attack should use std::cout to print something like "<name> swings a <weapon>\n"
   // The setWeapon() method should set the weapon variable (the private member variable) 
+class Knight{
+  private:
+    std::string weapon = "Longsword"; //private
+  public:
+    void setWeapon(std::string weapon){
+      this -> weapon = weapon; 
+    }
+    std::string name;
+    void attack(){
+      std::cout << name << "attacks with a " << weapon << '\n'; 
+    }
 
+}
   // as 2.2
   // Derived class Sorcerer
   // TO DO: implement attack() and clone() and setAbility()
