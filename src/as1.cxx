@@ -4,9 +4,10 @@
 namespace homework {
 
 void swap_ptr(int* a, int* b, int *c) { 
-    *a = *b;
-    *b = *c;
-    *c = *a;
+    int aOriginal = *a;
+    *a = *b; //asked chat gpt what was wrong here because it felt suspiciously simple
+    *b = *c; 
+    *c = aOriginal; //chat told me to make C point to the ORIGINAL value of A, not the new value of A
     return;
 }
 
