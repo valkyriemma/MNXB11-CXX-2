@@ -21,9 +21,9 @@ namespace homework {
   // Hint: can use pointer arithmetics on a unique_ptr
   class UniqueData{
     public:
-      UniqueData(int value);
-      int get() const;
-      void set(int value);
+      UniqueData(int value); //constructor 
+      int get() const; //return value in heap
+      void set(int value); //set value in heap
 
 
     private:

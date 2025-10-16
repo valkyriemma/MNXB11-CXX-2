@@ -25,5 +25,11 @@ int main(){
     std::cout << "a = " << a << '\n';
     std::cout << "b = " << b << '\n';
     std::cout << "c = " << c << '\n';
+
+    //As 1.2
+    homework::UniqueData test(1);
+    test.set(2); 
+    std::cout << "the value on the heap is now: " << test.get() << '\n';
+ 
 }
 
