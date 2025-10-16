@@ -4,7 +4,7 @@
 
 namespace homework {
 
-    //As 1.1
+    //As 1.1 complete
 void swap_ptr(int* a, int* b, int *c) { 
     int aOriginal = *a;
     *a = *b; //asked chat gpt what was wrong here because it felt suspiciously simple
@@ -13,7 +13,7 @@ void swap_ptr(int* a, int* b, int *c) {
     return;
 }
 
-    //As 1.2
+    //As 1.2 complete
 UniqueData::UniqueData(int value) {
     // constructor
     data_ = std::make_unique<int>(value);

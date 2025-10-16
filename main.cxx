@@ -17,7 +17,7 @@ void swap_ptr(int* a, int* b, int *c) {
 }
 
 int main(){
-    //As 1.1
+    //As 1.1 complete
     int a = 1;
     int b = 2;
     int c = 3;
@@ -26,7 +26,7 @@ int main(){
     std::cout << "b = " << b << '\n';
     std::cout << "c = " << c << '\n';
 
-    //As 1.2
+    //As 1.2 complete
     homework::UniqueData test(1);
     test.set(2); 
     std::cout << "the value on the heap is now: " << test.get() << '\n';
