@@ -33,8 +33,22 @@ int main(){
     std::cout << "the value on the heap is now: " << test.get() << '\n';
  
 
-    //As 2.1 in progress
+    //As 2.1 done
     homework::Knight Knight1;
     Knight1.name = "Ser_Lancelot";
+    Knight1.setWeapon("Enchanted_Longsword");
+    Knight1.attack();
+
+    std::unique_ptr<Knight> copy = Knight1.clone();
+    copy->attack(); 
+
+    //As 2.2 done
+    homework::Sorcerer Sorcerer1;
+    Sorcerer1.name = "Gale of Waterdeep";
+    Sorcerer1.setAbility("Chain_Lightning");
+    Sorcerer1.attack();
+    
+    std::unique_ptr<Sorcerer> copy = Sorcerer1.clone();
+    copy->attack();
 }
 

@@ -47,19 +47,34 @@ class Knight{
     }
     std::string name;
     void attack(){
-      std::cout << name << "attacks with a " << weapon << '\n'; 
+      std::cout << name << " attacks with a " << weapon << '\n'; 
     }
-    void clone(){
-      //reviewed what i did in as1 regarding make_unique
-      std::make_unique;
+    std::unique_ptr<Knight> clone(){
+      //review what i did in as1 regarding make_unique to use it here
+      //basically used as1 to write:
+      return std::make_unique<Knight>(*this);
+      //chatgpt said i had to put (*this) to indicate i want to make a copy
     }
-
-}
+};
   // as 2.2
   // Derived class Sorcerer
   // TO DO: implement attack() and clone() and setAbility()
   // Same as the Knight class
-
+class Sorcerer{
+  private:
+    std::string ability = "Worlds_Biggest_Deadliest_Fireball_EVER";
+  public:
+    void setAbility(std::string ability){
+      this -> ability = ability;
+    }
+    std::string name;
+    void attack(){
+      std::cout << name << " casts " << ability << '\n';
+    }
+    std::unique_ptr<Sorcerer> clone(){
+      return std::make_unique<Sorcerer>(*this);
+    }
+};
   // as 2.3 (This is a stretch goal, hand it in, and if it does not work, you can still pass the assignment)
   // Duel class template
   // TO DO: create a struct/class called Duel that is templated by two types (T1 and T2)
