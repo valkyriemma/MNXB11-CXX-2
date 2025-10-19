@@ -6,6 +6,7 @@
 #include "include/as1.hpp"
 #include "include/as2.hpp"
 #include <iostream>
+#include <string>
 
 using namespace homework;
 
@@ -34,21 +35,30 @@ int main(){
  
 
     //As 2.1 done
-    homework::Knight Knight1;
-    Knight1.name = "Ser_Lancelot";
+    homework::Knight Knight1("Ser_Lancelot");
     Knight1.setWeapon("Enchanted_Longsword");
     Knight1.attack();
 
-    std::unique_ptr<Knight> copy = Knight1.clone();
-    copy->attack(); 
+    std::unique_ptr<Entity> KnightCopy = Knight1.clone();
+    KnightCopy->attack();
 
     //As 2.2 done
-    homework::Sorcerer Sorcerer1;
-    Sorcerer1.name = "Gale of Waterdeep";
-    Sorcerer1.setAbility("Chain_Lightning");
+    
+    homework::Sorcerer Sorcerer1("Gale of Waterdeep");
+    Sorcerer1.setAbility("Worlds_Biggest_Deadliest_Fireball_EVER");
     Sorcerer1.attack();
     
-    std::unique_ptr<Sorcerer> copy = Sorcerer1.clone();
-    copy->attack();
+    std::unique_ptr<Entity> SorcererCopy = Sorcerer1.clone();
+    SorcererCopy->attack(); 
+
+    // my original test code is irrelevant now
+    // the classes were not originally part of Entity struc
+    // now they are, but that broke my code :( sad me 
+    // previous version has my oriignal code 
+    // i had to alter it just slightly to work w/ Entity
+    // i will just rewrite whats necessary for the duel template
+
+    homework::Duel<Knight, Sorcerer> duel(&Knight1, &Sorcerer1);
+    std::unique_ptr<Entity> winner = duel.fight();
 }
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <sstream>
 #include <string>
 #include <iostream>
 #include <random>
@@ -38,18 +38,18 @@ namespace homework {
   // Note: use std::make_unique in clone() and the this pointer to copy the object using chatGPT is okay for this purpose
   // The attack should use std::cout to print something like "<name> swings a <weapon>\n"
   // The setWeapon() method should set the weapon variable (the private member variable) 
-class Knight{
+class Knight : public Entity {
   private:
     std::string weapon = "Longsword"; //private
   public:
-    void setWeapon(std::string weapon){
-      this -> weapon = weapon; 
+    void setWeapon(std::string w){
+      weapon = w; //adjusted to work with Entity inheritance
     }
-    std::string name;
-    void attack(){
-      std::cout << name << " attacks with a " << weapon << '\n'; 
+    Knight(std::string n) : Entity(n) {} //adjusted naming to work w/ Entity inheritance
+    void attack() const override{
+      std::cout << name << " attacks with a " << weapon << '\n'; //
     }
-    std::unique_ptr<Knight> clone(){
+    std::unique_ptr<Entity> clone() const override{
       //review what i did in as1 regarding make_unique to use it here
       //basically used as1 to write:
       return std::make_unique<Knight>(*this);
@@ -60,18 +60,18 @@ class Knight{
   // Derived class Sorcerer
   // TO DO: implement attack() and clone() and setAbility()
   // Same as the Knight class
-class Sorcerer{
+class Sorcerer : public Entity {
   private:
-    std::string ability = "Worlds_Biggest_Deadliest_Fireball_EVER";
+    std::string ability = "Spell";
   public:
-    void setAbility(std::string ability){
-      this -> ability = ability;
+    void setAbility(std::string a){
+      ability = a;
     }
-    std::string name;
-    void attack(){
+    Sorcerer(std::string n) : Entity(n) {}
+    void attack() const override{
       std::cout << name << " casts " << ability << '\n';
     }
-    std::unique_ptr<Sorcerer> clone(){
+    std::unique_ptr<Entity> clone() const override{
       return std::make_unique<Sorcerer>(*this);
     }
 };
@@ -85,5 +85,31 @@ class Sorcerer{
   // - print to std::cout "<name> wins the duel!\n"
   // - return a std::unique_ptr<Entity> to the winner (use clone() to copy the object)
 
+  template <typename T1, typename T2>
+  class Duel{
+    private: 
+      T1* entity1;
+      T2* entity2;
+    public:
+      Duel(T1* e1, T2* e2) : entity1(e1), entity2(e2) {}
+      std::unique_ptr<Entity> fight(){
+        entity1->attack();
+        entity2->attack();
+
+        int win = (dist(gen) < 0.5) ? 0 : 1;
+
+        if (win==0) {
+          std::cout << entity1->getName() << " wins the duel!" << '\n';
+          return entity1->clone();
+        }
+        else {
+          std::cout << entity2->getName() << " wins the duel!" << '\n';
+          return entity2->clone();
+        }
+          } //had to rewrite my classes as inheriting from entity
+          // totally misread instructions lol sorry!
+          // simple fix i think but not sure if i did it right,
+          // i think Knight and Sorcerer are entities now (at least i hope so)
+      };
 } // namespace homework
 
