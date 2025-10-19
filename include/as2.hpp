@@ -49,6 +49,10 @@ class Knight{
     void attack(){
       std::cout << name << "attacks with a " << weapon << '\n'; 
     }
+    void clone(){
+      //reviewed what i did in as1 regarding make_unique
+      std::make_unique;
+    }
 
 }
   // as 2.2

@@ -4,6 +4,7 @@
  * */
 
 #include "include/as1.hpp"
+#include "include/as2.hpp"
 #include <iostream>
 
 using namespace homework;
@@ -31,5 +32,9 @@ int main(){
     test.set(2); 
     std::cout << "the value on the heap is now: " << test.get() << '\n';
  
+
+    //As 2.1 in progress
+    homework::Knight Knight1;
+    Knight1.name = "Ser_Lancelot";
 }
 
